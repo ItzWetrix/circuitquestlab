@@ -5,12 +5,23 @@ export default function Home() {
     // Main container – simplified for smoother scrolling
     <div 
       className="h-screen overflow-y-auto overflow-x-hidden bg-[#0d0e12] font-sans text-gray-200 antialiased"
+      style={{ perspective: "2px" }}
     >
       {/* 3D Parallax Space Background */}
-      <div className="absolute inset-0 animate-stars" />
+      <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-15 bg-repeat min-h-[200vh]"
+        style={{
+          backgroundImage: "url('/images/bg-stars.svg')",
+          backgroundSize: "500px 500px",
+          backgroundPosition: "0 0",
+          transform: "translateZ(-2px) scale(2)",
+          transformOrigin: "center center",
+        }}
+      />
       
       <div 
         className="relative z-10 flex flex-col items-center w-full"
+        style={{ transform: "translateZ(0)" }}
       >
         
         {/* HERO SECTION */}
