@@ -4,13 +4,7 @@ import { featuredLink, links } from "./modules/link-data";
 export default function LinksPage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#07090f] text-white">
-      <div
-        className="absolute inset-0 z-0 bg-repeat opacity-20 animate-stars pointer-events-none"
-        style={{
-          backgroundImage: "url('/images/bg-stars.svg')",
-          backgroundSize: "500px 500px",
-        }}
-      />
+      <div className="absolute inset-0 animate-stars" />
 
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.16),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.12),transparent_30%)]" />
 

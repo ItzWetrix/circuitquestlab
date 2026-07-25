@@ -7,13 +7,7 @@ export default function Home() {
       className="h-screen overflow-y-auto overflow-x-hidden bg-[#0d0e12] font-sans text-gray-200 antialiased"
     >
       {/* 3D Parallax Space Background */}
-      <div 
-        className="absolute inset-0 z-0 pointer-events-none opacity-15 bg-repeat animate-stars"
-        style={{
-          backgroundImage: "url('/images/bg-stars.svg')",
-          backgroundSize: "500px 500px",
-        }}
-      />
+      <div className="absolute inset-0 animate-stars" />
       
       <div 
         className="relative z-10 flex flex-col items-center w-full"

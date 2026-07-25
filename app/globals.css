@@ -26,15 +26,24 @@ body {
 }
 
 @keyframes moveStars {
-  0% { transform: translate3d(0px, 0px, 0) scale(1.5); }
-  5% { transform: translate3d(-20px, -40px, 0) scale(1.5); }
+  0% { transform: translate3d(0, 0, 0) scale(1.5); }
   100% { transform: translate3d(-200px, -400px, 0) scale(1.5); }
 }
 
 .animate-stars {
-  transform: translate3d(0,0,0) scale(1.5);
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url('/images/bg-stars.svg');
+  background-repeat: repeat;
+  background-size: 500px 500px;
+  background-position: 0 0;
+  opacity: 0.15;
+  transform: translate3d(0, 0, 0) scale(1.5);
   will-change: transform;
   animation: moveStars 240s linear infinite;
+  backface-visibility: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
