@@ -24,7 +24,7 @@ export default function Home() {
       >
         
         {/* HERO SECTION */}
-        <main className="flex w-full flex-col items-center justify-center text-center px-6 py-32 sm:py-48 min-h-[85vh]">
+        <main className="flex w-full flex-col items-center justify-center text-center px-6 py-32 sm:py-48 h-[100vh]">
           
           <div className="relative mb-8 transform hover:scale-105 transition-transform duration-300">
             <Image
@@ -42,21 +42,32 @@ export default function Home() {
           </h1>
 
           <p className="mt-6 text-base sm:text-lg md:text-xl text-zinc-400 max-w-2xl font-medium px-4 leading-relaxed">
-            Documenting hardware builds, DIY engineering, and finding functional solutions to complex problems. Follow my journey from the first prototype to the final product.
+            Documenting hardware builds, DIY engineering, and exploring physics. Follow my journey from the first prototype to the final product.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-4 w-full justify-center px-8 sm:px-0 max-w-sm sm:max-w-none">
-            {/* YouTube Call to Action */}
             <a 
-              href="https://youtube.com" 
+              href="https://www.youtube.com/@CircuitQuestLab?sub_confirmation=1" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-[#E50914] hover:bg-[#B80710] text-white font-bold py-3.5 px-8 rounded-full border border-red-400/20 transition-all duration-200 transform hover:scale-[1.02] shadow-lg shadow-red-500/10 active:scale-[0.98]"
             >
-              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
+              <Image
+                src="/images/youtube-logo-icon_filled.svg"
+                alt="YouTube Logo"
+                width={24}
+                height={24}
+                className="invert"
+              />
               WATCH ON YOUTUBE
+            </a>
+
+            {/* Links page */}
+            <a 
+              href="https://www.links.circuitquestlab.cz" 
+              className="flex items-center justify-center gap-2 bg-[#A855F7] hover:bg-[#b56bf8] text-white font-bold py-3.5 px-8 rounded-full border border-purple-400/20 transition-all duration-200 transform hover:scale-[1.02] shadow-lg shadow-purple-500/10 active:scale-[0.98]"
+            >
+              FOLLOW ME
             </a>
 
             {/* Scroll Anchor Link */}
@@ -109,11 +120,22 @@ export default function Home() {
             </div>
             <div className="w-full md:w-1/2">
               <span className="text-xs font-bold text-[#A855F7] tracking-wider uppercase">Latest Project</span>
-              <h3 className="text-2xl font-bold text-white mt-2">Automated IoT Weather Station</h3>
+              <h3 className="text-2xl font-bold text-white mt-2">Building a Giant CNC Foam Cutter from Scratch</h3>
               <p className="text-zinc-400 text-sm mt-3 leading-relaxed">
-                A custom PCB design optimized for ultra-low power consumption on an ESP32 chip using solar harvesting, packed inside a weather-proof 3D printed housing.
+                In this project, I designed and built a large-scale CNC foam cutter capable of cutting intricate shapes for cosplay and prop-making. The build process involved custom electronics, stepper motors, and a unique hot wire cutting mechanism.
               </p>
-              <div className="mt-6 flex gap-4">
+              <div className="mt-6 flex flex-wrap gap-4">
+                {/* New Watch Button with Inverted Logo */}
+                <button className="flex items-center justify-center gap-2 text-xs bg-[#E50914] hover:bg-[#B80710] text-white font-bold py-2.5 px-4 rounded-xl transition-colors">
+                  <Image
+                    src="/images/youtube-logo-icon_filled.svg"
+                    alt="YouTube Logo"
+                    width={16}
+                    height={16}
+                    className="invert"
+                  />
+                  Watch
+                </button>
                 <button className="text-xs bg-[#A855F7] hover:bg-[#9333EA] text-white font-bold py-2.5 px-4 rounded-xl transition-colors">
                   Read Full Docs
                 </button>

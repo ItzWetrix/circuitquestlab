@@ -26,10 +26,18 @@ body {
 }
 
 @keyframes slowPan {
-  from { background-position: 0 0; }
-  to { background-position: 1000px 2000px; }
+  0% { background-position: 0 0; }
+  5% { background-position: 50px 100px; }
+  100% { background-position: 1000px 2000px; }
 }
 
 .animate-stars {
-  animation: slowPan 70s linear infinite;
+  animation: slowPan 240s cubic-bezier(0.2, 0, 0.8, 1) infinite;
+  will-change: background-position;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-stars {
+    animation: none;
+  }
 }
