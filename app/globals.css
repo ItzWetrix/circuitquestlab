@@ -25,19 +25,21 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@keyframes slowPan {
-  0% { background-position: 0 0; }
-  5% { background-position: 50px 100px; }
-  100% { background-position: 1000px 2000px; }
+@keyframes moveStars {
+  0% { transform: translate3d(0px, 0px, 0) scale(1.5); }
+  5% { transform: translate3d(-20px, -40px, 0) scale(1.5); }
+  100% { transform: translate3d(-200px, -400px, 0) scale(1.5); }
 }
 
 .animate-stars {
-  animation: slowPan 240s cubic-bezier(0.2, 0, 0.8, 1) infinite;
-  will-change: background-position;
+  transform: translate3d(0,0,0) scale(1.5);
+  will-change: transform;
+  animation: moveStars 240s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-stars {
-    animation: none;
+    animation: none !important;
+    transform: none !important;
   }
 }

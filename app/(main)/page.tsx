@@ -9,7 +9,7 @@ export default function Home() {
     >
       {/* 3D Parallax Space Background */}
       <div 
-        className="absolute inset-0 z-0 pointer-events-none opacity-15 bg-repeat min-h-[200vh]"
+        className="absolute inset-0 z-0 pointer-events-none opacity-15 bg-repeat min-h-[200vh] animate-stars"
         style={{
           backgroundImage: "url('/images/bg-stars.svg')",
           backgroundSize: "500px 500px",
@@ -50,7 +50,7 @@ export default function Home() {
               href="https://www.youtube.com/@CircuitQuestLab?sub_confirmation=1" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-[#E50914] hover:bg-[#B80710] text-white font-bold py-3.5 px-8 rounded-full border border-red-400/20 transition-all duration-200 transform hover:scale-[1.02] shadow-lg shadow-red-500/10 active:scale-[0.98]"
+              className="flex items-center justify-center gap-2 bg-[#E50914] hover:bg-[#B80710] text-white font-bold py-3.5 px-8 rounded-full border border-red-400/20 transition-all duration-200 transform hover:scale-[1.02] shadow-md shadow-red-500/6 active:scale-[0.98]"
             >
               <Image
                 src="/images/youtube-logo-icon_filled.svg"
@@ -65,7 +65,7 @@ export default function Home() {
             {/* Links page */}
             <a 
               href="https://links.circuitquestlab.cz" 
-              className="flex items-center justify-center gap-2 bg-[#A855F7] hover:bg-[#b56bf8] text-white font-bold py-3.5 px-8 rounded-full border border-purple-400/20 transition-all duration-200 transform hover:scale-[1.02] shadow-lg shadow-purple-500/10 active:scale-[0.98]"
+              className="flex items-center justify-center gap-2 bg-[#A855F7] hover:bg-[#b56bf8] text-white font-bold py-3.5 px-8 rounded-full border border-purple-400/20 transition-all duration-200 transform hover:scale-[1.02] shadow-md shadow-purple-500/6 active:scale-[0.98]"
             >
               FOLLOW ME
             </a>
@@ -82,7 +82,7 @@ export default function Home() {
         </main>
 
         {/* CONTENT SECTION */}
-        <section id="projects" className="w-full max-w-5xl px-6 py-40 text-center border-t border-zinc-900/50 bg-[#0d0e12] rounded-t-3xl shadow-[0_-20px_50px_rgba(0,0,0,0.9)]">
+        <section id="projects" className="w-full max-w-5xl px-6 py-40 text-center border-t border-zinc-900/50 bg-[#0d0e12] rounded-t-3xl shadow-[0_-12px_40px_rgba(0,0,0,0.6)]">
           <h2 className="text-3xl font-extrabold text-white">What's Inside the Lab?</h2>
           <p className="text-zinc-400 mt-4 max-w-xl mx-auto">
             This website acts as an open log for my engineering experiments. Everything featured in the videos is shared here for your inspiration.
