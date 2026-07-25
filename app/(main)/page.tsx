@@ -64,7 +64,7 @@ export default function Home() {
 
             {/* Links page */}
             <a 
-              href="https://www.links.circuitquestlab.cz" 
+              href="https://links.circuitquestlab.cz" 
               className="flex items-center justify-center gap-2 bg-[#A855F7] hover:bg-[#b56bf8] text-white font-bold py-3.5 px-8 rounded-full border border-purple-400/20 transition-all duration-200 transform hover:scale-[1.02] shadow-lg shadow-purple-500/10 active:scale-[0.98]"
             >
               FOLLOW ME
