@@ -24,3 +24,12 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes slowPan {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 2000px; }
+}
+
+.animate-stars {
+  animation: slowPan 70s linear infinite;
+}
