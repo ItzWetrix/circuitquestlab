@@ -1,154 +1,169 @@
 import Image from "next/image";
+import Link from "next/link";
+import { getContentItems } from "@/modules/content-reader";
+import { Project, Article } from "@/modules/types";
+import ProjectCard from "@/modules/components/ProjectCard";
+import StarLayer from "@/modules/components/StarLayer";
 
 export default function Home() {
+  const projects = getContentItems<Project>("projects").filter(
+    (project) => project.title && project.description && project.date
+  );
+  const articles = getContentItems<Article>("articles").filter(
+    (article) => article.title && article.description && article.date
+  );
+  const featuredProjects = projects.slice(0, 3);
+  const latestArticles = articles.slice(0, 2);
+
   return (
-    // Main container – simplified for smoother scrolling
-    <div 
-      className="h-screen overflow-y-auto overflow-x-hidden bg-[#0d0e12] font-sans text-gray-200 antialiased"
-      style={{ perspective: "2px" }}
-    >
-      {/* 3D Parallax Space Background */}
-      <div
-        className="absolute inset-0 z-0 pointer-events-none opacity-15 bg-repeat min-h-[200vh]"
-        style={{
-          backgroundImage: "url('/images/bg-stars.svg')",
-          backgroundSize: "500px 500px",
-          backgroundPosition: "0 0",
-          transform: "translateZ(-2px) scale(2)",
-          transformOrigin: "center center",
-        }}
-      />
-      
-      <div 
-        className="relative z-10 flex flex-col items-center w-full"
-        style={{ transform: "translateZ(0)" }}
-      >
-        
-        {/* HERO SECTION */}
-        <main className="flex w-full flex-col items-center justify-center text-center px-6 py-32 sm:py-48 h-[100vh]">
-          
-          <div className="relative mb-8 transform hover:scale-105 transition-transform duration-300">
-            <Image
-              src="/images/icon.svg"
-              alt="Circuit Quest Lab Logo"
-              width={80}
-              height={80}
-              priority
-            />
+    <div className="relative min-h-screen overflow-hidden bg-[#0d0e12] font-sans text-gray-200 antialiased">
+      <StarLayer />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 py-10 sm:py-12">
+        <main className="mx-auto flex w-full max-w-5xl flex-col items-center text-center">
+          <div className="rounded-4xl border border-white/10 bg-[#11131c]/80 p-10 shadow-[0_20px_80px_rgba(0,0,0,0.55)] backdrop-blur-xl">
+            <div className="mb-8 flex items-center justify-center">
+              <div className="relative flex h-20 w-20 items-center justify-center rounded-3xl border border-white/15 bg-[#0f172a]/95 shadow-[0_0_35px_rgba(168,85,247,0.18)]">
+                <Image src="/images/icon.svg" alt="Circuit Quest Lab Logo" width={48} height={48} />
+              </div>
+            </div>
+
+            <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+              Circuit Quest Lab
+            </h1>
+            <p className="mx-auto mt-6 max-w-3xl text-base sm:text-lg text-zinc-300 leading-relaxed">
+              Documenting hardware builds, DIY engineering, and exploring physics. Follow my journey from the first prototype to the final product.
+            </p>
+
+            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                <a
+                href="https://www.youtube.com/@CircuitQuestLab?sub_confirmation=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 rounded-full bg-[#E50914] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#B80710]"
+              >
+                <Image
+                  src="/images/youtube-logo-icon_filled.svg"
+                  alt="YouTube Logo"
+                  width={18}
+                  height={18}
+                  className="invert"
+                />
+                YouTube
+              </a>
+              <a
+                href="https://links.circuitquestlab.cz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 rounded-full bg-[#A855F7] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#b56bf8]"
+              >
+                Links Hub
+              </a>
+              <Link
+                href="#featured-projects"
+                className="inline-flex items-center justify-center gap-3 rounded-full border border-zinc-800 bg-[#11131c] px-6 py-3.5 text-sm font-semibold text-[#A855F7] transition hover:border-[#A855F7] hover:bg-[#161a29]"
+              >
+                Explore Projects
+              </Link>
+            </div>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white max-w-4xl leading-tight uppercase">
-            Welcome to <br /> 
-            <span className="text-[#A855F7] drop-shadow-[0_0_25px_rgba(168,85,247,0.3)]">Circuit Quest Lab</span>
-          </h1>
-
-          <p className="mt-6 text-base sm:text-lg md:text-xl text-zinc-400 max-w-2xl font-medium px-4 leading-relaxed">
-            Documenting hardware builds, DIY engineering, and exploring physics. Follow my journey from the first prototype to the final product.
-          </p>
-
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 w-full justify-center px-8 sm:px-0 max-w-sm sm:max-w-none">
-            <a 
-              href="https://www.youtube.com/@CircuitQuestLab?sub_confirmation=1" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-[#E50914] hover:bg-[#B80710] text-white font-bold py-3.5 px-8 rounded-full border border-red-400/20 transition-all duration-200 transform hover:scale-[1.02] shadow-md shadow-red-500/6 active:scale-[0.98]"
-            >
-              <Image
-                src="/images/youtube-logo-icon_filled.svg"
-                alt="YouTube Logo"
-                width={24}
-                height={24}
-                className="invert"
-              />
-              WATCH ON YOUTUBE
-            </a>
-
-            {/* Links page */}
-            <a 
-              href="https://links.circuitquestlab.cz" 
-              className="flex items-center justify-center gap-2 bg-[#A855F7] hover:bg-[#b56bf8] text-white font-bold py-3.5 px-8 rounded-full border border-purple-400/20 transition-all duration-200 transform hover:scale-[1.02] shadow-md shadow-purple-500/6 active:scale-[0.98]"
-            >
-              FOLLOW ME
-            </a>
-
-            {/* Scroll Anchor Link */}
-            <a 
-              href="#projects"
-              className="flex items-center justify-center gap-2 bg-[#1c1e24] hover:bg-[#252830] text-[#A855F7] hover:text-[#b56bf8] font-bold py-3.5 px-8 rounded-full border border-zinc-800 transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
-            >
-              EXPLORE PROJECTS
-            </a>
+          <div className="mt-16 grid gap-6 sm:grid-cols-3">
+            <div className="rounded-3xl border border-zinc-800 bg-[#11131c] p-6 text-left">
+              <span className="text-xs uppercase tracking-[0.28em] text-[#A855F7]">Projects</span>
+              <p className="mt-4 text-3xl font-bold text-white">{projects.length}</p>
+              <p className="mt-2 text-sm text-zinc-400">Active engineering builds and documentation pages.</p>
+            </div>
+            <div className="rounded-3xl border border-zinc-800 bg-[#11131c] p-6 text-left">
+              <span className="text-xs uppercase tracking-[0.28em] text-[#A855F7]">Articles</span>
+              <p className="mt-4 text-3xl font-bold text-white">{articles.length}</p>
+              <p className="mt-2 text-sm text-zinc-400">Bench notes, electronics lessons, and lab experiments.</p>
+            </div>
+            <div className="rounded-3xl border border-zinc-800 bg-[#11131c] p-6 text-left">
+              <span className="text-xs uppercase tracking-[0.28em] text-[#A855F7]">Latest Update</span>
+              <p className="mt-4 text-3xl font-bold text-white">{articles[0]?.title ?? "No article yet"}</p>
+              <p className="mt-2 text-sm text-zinc-400">Fresh content from the lab linked below.</p>
+            </div>
           </div>
-
         </main>
 
-        {/* CONTENT SECTION */}
-        <section id="projects" className="w-full max-w-5xl px-6 py-40 text-center border-t border-zinc-900/50 bg-[#0d0e12] rounded-t-3xl shadow-[0_-12px_40px_rgba(0,0,0,0.6)]">
-          <h2 className="text-3xl font-extrabold text-white">What's Inside the Lab?</h2>
-          <p className="text-zinc-400 mt-4 max-w-xl mx-auto">
-            This website acts as an open log for my engineering experiments. Everything featured in the videos is shared here for your inspiration.
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 max-w-4xl mx-auto text-left">
-            {/* Box 1: Documentation */}
-            <div className="p-6 bg-[#13141c] border border-zinc-800 rounded-2xl hover:border-zinc-700 transition-colors">
-              <div className="text-2xl mb-3">🛠️</div>
-              <h3 className="text-lg font-bold text-white mb-2">Project Logs</h3>
-              <p className="text-sm text-zinc-400">In-depth analysis of hardware issues, dead ends, and deep-dive troubleshooting that cuts from the main videos.</p>
+        <section id="featured-projects" className="mt-24">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm uppercase tracking-[0.28em] text-[#A855F7]">Featured Builds</p>
+              <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-white">Latest project work</h2>
             </div>
-            
-            {/* Box 2: Schematics & Code */}
-            <div className="p-6 bg-[#13141c] border border-zinc-800 rounded-2xl hover:border-zinc-700 transition-colors">
-              <div className="text-2xl mb-3">📐</div>
-              <h3 className="text-lg font-bold text-white mb-2">Schematics & Code</h3>
-              <p className="text-sm text-zinc-400">Downloadable CAD schematics, 3D printable files, and code repositories for Arduino, ESP32, and Raspberry Pi builds.</p>
-            </div>
-            
-            {/* Box 3: Gear Setup */}
-            <div className="p-6 bg-[#13141c] border border-zinc-800 rounded-2xl hover:border-zinc-700 transition-colors">
-              <div className="text-2xl mb-3">🔬</div>
-              <h3 className="text-lg font-bold text-white mb-2">My Gear</h3>
-              <p className="text-sm text-zinc-400">A curated, transparent list of the test bench instruments, soldering equipment, and tools I use on a daily basis.</p>
-            </div>
+            <Link
+              href="/projects"
+              className="inline-flex items-center justify-center rounded-full border border-zinc-800 bg-[#11131c] px-5 py-3 text-sm font-semibold text-white transition hover:border-purple-500/50 hover:bg-[#161a29]"
+            >
+              View all projects
+            </Link>
           </div>
 
-          {/* LATEST FEATURED PROJECT CONTEXT */}
-          <div className="mt-32 max-w-4xl mx-auto text-left bg-[#13141c] border border-zinc-800 rounded-3xl p-8 flex flex-col md:flex-row gap-8 items-center">
-            <div className="w-full md:w-1/2 aspect-video bg-zinc-900 rounded-xl overflow-hidden relative border border-zinc-800">
-              <div className="absolute inset-0 flex items-center justify-center text-zinc-600 font-bold text-sm bg-gradient-to-br from-purple-950/20 to-black">
-                [ Latest Project Video Thumbnail / Image Here ]
+          <div className="mt-8 grid gap-8 xl:grid-cols-3">
+            {featuredProjects.length > 0 ? (
+              featuredProjects.map((project) => (
+                <ProjectCard key={project.slug} project={project} />
+              ))
+            ) : (
+              <div className="rounded-3xl border border-zinc-800 bg-[#11131c] p-10 text-center text-zinc-400">
+                No projects available.
               </div>
-            </div>
-            <div className="w-full md:w-1/2">
-              <span className="text-xs font-bold text-[#A855F7] tracking-wider uppercase">Latest Project</span>
-              <h3 className="text-2xl font-bold text-white mt-2">Building a Giant CNC Foam Cutter from Scratch</h3>
-              <p className="text-zinc-400 text-sm mt-3 leading-relaxed">
-                In this project, I designed and built a large-scale CNC foam cutter capable of cutting intricate shapes for cosplay and prop-making. The build process involved custom electronics, stepper motors, and a unique hot wire cutting mechanism.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-4">
-                {/* New Watch Button with Inverted Logo */}
-                <button className="flex items-center justify-center gap-2 text-xs bg-[#E50914] hover:bg-[#B80710] text-white font-bold py-2.5 px-4 rounded-xl transition-colors">
-                  <Image
-                    src="/images/youtube-logo-icon_filled.svg"
-                    alt="YouTube Logo"
-                    width={16}
-                    height={16}
-                    className="invert"
-                  />
-                  Watch
-                </button>
-                <button className="text-xs bg-[#A855F7] hover:bg-[#9333EA] text-white font-bold py-2.5 px-4 rounded-xl transition-colors">
-                  Read Full Docs
-                </button>
-                <button className="text-xs bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-2.5 px-4 rounded-xl transition-colors">
-                  Get Gerber/STL Files
-                </button>
-              </div>
-            </div>
+            )}
           </div>
-
         </section>
 
+        <section className="mt-24 pb-24">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm uppercase tracking-[0.28em] text-[#A855F7]">Lab Articles</p>
+              <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-white">Bench notes & updates</h2>
+            </div>
+            <Link
+              href="/articles"
+              className="inline-flex items-center justify-center rounded-full border border-zinc-800 bg-[#11131c] px-5 py-3 text-sm font-semibold text-white transition hover:border-purple-500/50 hover:bg-[#161a29]"
+            >
+              Read all articles
+            </Link>
+          </div>
+
+          <div className="mt-8 grid gap-6 sm:grid-cols-2">
+            {latestArticles.length > 0 ? (
+              latestArticles.map((article) => {
+                const formattedDate = new Date(article.date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                });
+
+                return (
+                  <Link
+                    key={article.slug}
+                    href={`/articles/${article.slug}`}
+                    className="group block rounded-3xl border border-zinc-800 bg-[#11131c] p-6 transition hover:border-purple-500/50 hover:bg-[#161a29]"
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="text-xs uppercase tracking-[0.24em] text-[#A855F7]">{formattedDate}</span>
+                      <span className="rounded-full bg-[#181b25] px-3 py-1 text-xs font-semibold text-zinc-300">Article</span>
+                    </div>
+                    <h3 className="mt-5 text-2xl font-bold text-white transition group-hover:text-purple-300">
+                      {article.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-zinc-400">{article.description}</p>
+                    <div className="mt-6 text-sm font-semibold text-purple-400 transition group-hover:text-purple-300">
+                      Read the article →
+                    </div>
+                  </Link>
+                );
+              })
+            ) : (
+              <div className="rounded-3xl border border-zinc-800 bg-[#11131c] p-10 text-center text-zinc-400">
+                No articles available.
+              </div>
+            )}
+          </div>
+        </section>
       </div>
     </div>
   );

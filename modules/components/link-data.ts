@@ -7,14 +7,26 @@ export type LinkItem = {
   invert?: boolean;
 };
 
-export const featuredLink: LinkItem = {
-  label: "circuitquestlab.cz",
-  href: "https://circuitquestlab.cz",
-  icon: "/images/icon.svg",
-  description: "Visit the full Circuit Quest Lab website for project archives, articles, and the latest lab updates.",
-  accent: "from-[#10B981] to-[#06B6D4]",
-  invert: false,
-};
+export const featuredLinks: LinkItem[] = [
+  {
+    label: "circuitquestlab.cz",
+    href: "https://circuitquestlab.cz",
+    icon: "/images/icon.svg",
+    description: "Visit the full Circuit Quest Lab website for project archives, articles, and the latest lab updates.",
+    accent: "from-[#10B981] to-[#06B6D4]",
+    invert: false,
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@CircuitQuestLab?sub_confirmation=1",
+    icon: "/images/youtube-logo-icon_filled.svg",
+    description: "Subscribe for build videos, tutorials, and lab walkthroughs.",
+    accent: "from-[#FF0000] to-[#F97316]",
+    invert: true,
+  }
+];
+
+export const featuredLink: LinkItem = featuredLinks[0];
 
 export const links: LinkItem[] = [
   {
@@ -23,14 +35,6 @@ export const links: LinkItem[] = [
     icon: "/images/patreon-logo-icon_filled.svg",
     description: "Support the lab and get early access to build notes, behind-the-scenes updates, and exclusive content.",
     accent: "from-[#FF5A5F] to-[#F97316]",
-    invert: true,
-  },
-  {
-    label: "YouTube",
-    href: "https://www.youtube.com/@CircuitQuestLab?sub_confirmation=1",
-    icon: "/images/youtube-logo-icon_filled.svg",
-    description: "Subscribe for build videos, tutorials, and lab walkthroughs.",
-    accent: "from-[#FF0000] to-[#F97316]",
     invert: true,
   },
   {

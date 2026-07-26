@@ -13,7 +13,6 @@ export default function LinkCard({ link, className = "" }: { link: LinkItem; cla
       <div className="relative flex items-center gap-4">
         <div className={`flex h-16 w-16 aspect-square items-center justify-center rounded-lg bg-linear-to-br ${link.accent} shadow-[0_0_12px_rgba(168,85,247,0.12)]`}>
           
-          {/* FIX: Locked wrapper box with relative sizing */}
           <div className="relative h-7 w-7 flex items-center justify-center">
             <Image
               src={link.icon}

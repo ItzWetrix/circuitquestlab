@@ -1,5 +1,5 @@
-import LinkCard from "./modules/LinkCard";
-import { featuredLink, links } from "./modules/link-data";
+import LinkCard from "../../../modules/components/LinkCard";
+import { featuredLinks, links } from "../../../modules/components/link-data";
 
 export default function LinksPage() {
   return (
@@ -37,7 +37,13 @@ export default function LinksPage() {
         </header>
 
         <section className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <LinkCard link={featuredLink} className="sm:col-span-2 lg:col-span-3" />
+          {featuredLinks.map((link) => (
+            <LinkCard
+              key={link.label}
+              link={link}
+              className="sm:col-span-2 lg:col-span-3"
+            />
+          ))}
           {links.map((link) => (
             <LinkCard key={link.label} link={link} />
           ))}
